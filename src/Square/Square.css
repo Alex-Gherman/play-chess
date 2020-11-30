@@ -1,0 +1,10 @@
+.square-black {
+    background-color: #B59963;
+}
+.square-white {
+    background-color: #f0D9B5;
+}
+.board-square {
+    width: 100%;
+    height: 100%;
+}
