@@ -17,10 +17,10 @@ export default function BoardSquare({ piece, black, position }) {
     })
     useEffect( () =>{
         const subscribe = gameSubject.subscribe(({pendingPromotion}) =>
-        pendingPromotion && pendingPromotion.to == position ? setPromotion(pendingPromotion) :setPromotion(null)
+        pendingPromotion && pendingPromotion.to === position ? setPromotion(pendingPromotion) :setPromotion(null)
         )
         return () => subscribe.unsubscribe()
-    },[])
+    },[position])
     return (
     <div className='board-square' ref={drop}>
         <Square black={black}>

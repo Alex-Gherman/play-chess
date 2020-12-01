@@ -40,6 +40,7 @@ function updateGame(pendingPromotion){
         board:chess.board(),
         pendingPromotion,
         isGameOver,
+        turn: chess.turn(),
         result: isGameOver ? getGameResult() :null
     }
     
@@ -62,4 +63,8 @@ function getGameResult(){
     } else{
         return 'UNKNOW REASON '
     }
+}
+export function resetGame(){
+    chess.reset()
+    updateGame()
 }
