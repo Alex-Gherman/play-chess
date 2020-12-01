@@ -43,11 +43,6 @@
   height: 100%;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-
 
 .piece {
   max-width: 70%;

@@ -11,8 +11,12 @@ export const gameSubject = new BehaviorSubject({
 export function initGame(){
     updateGame()
 }
-export function move(from, to){
-    const legalMove = chess.move({from, to,})
+export function move(from, to, promotion){
+    let tempMove = {from, to}
+    if(promotion){
+        tempMove.promotion = promotion
+    }
+    const legalMove = chess.move(tempMove)
     if(legalMove) {
         updateGame()
     }

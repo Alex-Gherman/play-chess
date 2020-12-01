@@ -15,7 +15,7 @@ export default function Piece({piece:{type, color}, position}) {
     const piceImg = require(`./assets/${type}_${color}.png`)
     return (
         <>
-            <DragPreviewImage connect={preview} src={piceImg.default}/>
+            <DragPreviewImage connect={preview} src={piceImg.default} />
             <div className='piece-container' ref={drag} style={{ opacity: isDragging ? 0 : 1}}>
                 <img src={piceImg.default} alt="" className='piece' />
             </div>
