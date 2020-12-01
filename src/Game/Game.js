@@ -9,6 +9,10 @@ export const gameSubject = new BehaviorSubject({
 
 })
 export function initGame(){
+    const savedGame = localStorage.getItem('savedGame')
+    if(savedGame){
+        chess.load(savedGame)
+    }
     updateGame()
 }
 export function move(from, to, promotion){
@@ -23,7 +27,6 @@ export function move(from, to, promotion){
 }
 export function handleMove(from, to){
     const promotions = chess.moves({ verbose: true }).filter(m => m.promotion)
-    // console.table(promotions)
     if(promotions.some(promotion => `${promotion.from}:${promotion.to}`===`${from}:${to}` )){
         const pendingPromotion = {from, to, color:promotions[0].color}
         updateGame(pendingPromotion)
@@ -43,7 +46,7 @@ function updateGame(pendingPromotion){
         turn: chess.turn(),
         result: isGameOver ? getGameResult() :null
     }
-    
+    localStorage.setItem('savedGame',chess.fen())
     gameSubject.next(newGame)
 }
 function getGameResult(){
